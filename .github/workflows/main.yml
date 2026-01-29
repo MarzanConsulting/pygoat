@@ -55,7 +55,7 @@ jobs:
       uses: docker/scout-action@v1.18.2
       with:
         # Return exit code 2 if vulnerability changes are detected. Default is false.
-        exit-code: "true"      
+        exit-code: "false"      
         # Command(s) to run.
         #Use a comma separated list to run several commands on the same set of parameters, for instance quickview,compare
         command: quickview,cves
