@@ -17,7 +17,7 @@ RUN echo "deb http://archive.debian.org/debian/ buster main contrib non-free" > 
 #RUN apt-get install --no-install-recommends -y dnsutils=1:9.11.5.P4+dfsg-5.1+deb10u11
 
 RUN apt-get install --no-install-recommends -y libpq-dev
-RUN apt-get install --no-install-recommends -y python3-dev
+#RUN apt-get install --no-install-recommends -y python3-dev
 
 RUN apt-get clean 
 RUN rm -rf /var/lib/apt/lists/*
