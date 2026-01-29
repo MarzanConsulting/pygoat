@@ -15,7 +15,7 @@ RUN echo "deb http://archive.debian.org/debian/ buster main contrib non-free" > 
 
 #RUN apt-get update --fix-missing
 
-RUN apt-get install --no-install-recommends -y dnsutils
+RUN apt-get install --no-install-recommends -y bind9-dnsutils
 RUN apt-get install --no-install-recommends -y libpq-dev
 RUN apt-get install --no-install-recommends -y python3-dev
 
