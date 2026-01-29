@@ -54,6 +54,8 @@ jobs:
     - name: Scout Image Scan
       uses: docker/scout-action@v1.18.2
       with:
+        # Return exit code 2 if vulnerability changes are detected. Default is false.
+        exit-code: "true"      
         # Command(s) to run.
         #Use a comma separated list to run several commands on the same set of parameters, for instance quickview,compare
         command: quickview,cves
@@ -61,3 +63,15 @@ jobs:
         dockerhub-user: ${{ secrets.REGISTRY_USERNAME }}
         # Docker Hub PAT
         dockerhub-password: ${{ secrets.REGISTRY_PASSWORD }}
+        # Comma separated list of severities (critical, high, medium, low, unspecified) to filter CVEs by
+        only-severities: critical,high
+        # Write output to a SARIF file for further processing or upload into GitHub code scanning
+        sarif-file: docker-scout-report.sarif
+
+
+    - name: Upload Scout Report
+      uses: actions/upload-artifact@v4
+      if: always()      
+      with:
+        name: docker-scout-findings
+        path: docker-scout-report.sarif
